@@ -192,6 +192,19 @@
 
 ////////////////////////////
 
+// 1. Each College has an IPEDS id
+// 2. Get all of the IPEDS id's from the nces.ed.gov/ipeds
+
+// End Goal is an array of objects with college data from nces.ed.gov/collegenavigator
+
+// Goal 1:  Id should be the ipeds id
+// Goal 2:  Can you create an async await, so that the fetch request go in order, & don't overwhelm the server
+// Goal 3:  Can you add one piece of data reliably?
+////// college tuition... can be private, in-state, out-of-state, in-district, other
+////// college data could 2022-2023 only vs the last 4 years
+//////
+////// recommend starting with "Undergraduate enrollment"
+
 const fs = require("fs");
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -206,16 +219,18 @@ urls.forEach((url, index) => {
       const html = response.data;
       const $ = cheerio.load(html);
 
-      // const schoolName = $(".headerlg").text().trim();
-      // const phoneNumber = $('td:contains("General information:")').next().text().trim();
-      // const website = $('td:contains("Website:")').next().text().trim();
+      const schoolName = $(".headerlg").text().trim();
+      const phoneNumber = $('td:contains("General information:")').next().text().trim();
+      const website = $('td:contains("Website:")').next().text().trim();
 
       results.push({
         id: index,
-        // schoolName,
-        // phoneNumber,
-        // website,
+        schoolName,
+        phoneNumber,
+        website,
       });
+
+      console.log("Index: ", index);
 
       fs.writeFile("outputs/colleges.json", JSON.stringify(results), (err) => {
         if (err) throw err;
