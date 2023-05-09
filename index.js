@@ -205,6 +205,48 @@
 //////
 ////// recommend starting with "Undergraduate enrollment"
 
+// const fs = require("fs");
+// const axios = require("axios");
+// const cheerio = require("cheerio");
+// const urls = require("./inputs/urlsTEST.json");
+
+// const results = [];
+
+// urls.forEach((url, index) => {
+//   axios
+//     .get(url, { timeout: 30000 })
+//     .then((response) => {
+//       const html = response.data;
+//       const $ = cheerio.load(html);
+
+//       const schoolName = $(".headerlg").text().trim();
+//       const phoneNumber = $('td:contains("General information:")').next().text().trim();
+//       const website = $('td:contains("Website:")').next().text().trim();
+
+//       results.push({
+//         id: index,
+//         schoolName,
+//         phoneNumber,
+//         website,
+//       });
+
+//       console.log("Index: ", index);
+
+//       fs.writeFile("outputs/colleges.json", JSON.stringify(results), (err) => {
+//         if (err) throw err;
+//         // console.log(`${index} Results saved to file!`);
+//       });
+//     })
+//     .catch((error) => {
+//       console.log("Index: ", index);
+//       // console.log("schoolName: ", schoolName);
+//       console.log(error);
+//     });
+// });
+
+////////////////////////
+
+
 const fs = require("fs");
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -212,36 +254,88 @@ const urls = require("./inputs/urlsTEST.json");
 
 const results = [];
 
-urls.forEach((url, index) => {
-  axios
-    .get(url, { timeout: 30000 })
-    .then((response) => {
+async function getData() {
+  for (const [index, url] of urls.entries()) {
+    try {
+      const response = await axios.get(url, { timeout: 30000 });
       const html = response.data;
       const $ = cheerio.load(html);
-
       const schoolName = $(".headerlg").text().trim();
-      const phoneNumber = $('td:contains("General information:")').next().text().trim();
+      const phoneNumber = $('td:contains("General information:")')
+        .next()
+        .text()
+        .trim();
       const website = $('td:contains("Website:")').next().text().trim();
+      let someprogram = $(".pmtabular")
+        .find("tbody")
+        .find("tr")
+        .eq(1)
+        .find("td")
+        .eq(0)
+        .text()
+        .trim();
+      const studentToFacultyRatio = $('td:contains("Student-to-faculty ratio:")').next().text().trim();
+      let totalEnrollment = $('th:contains("Total enrollment")')
+        .next()
+        .text()
+        .trim();
+
+     let tuitionAndFees2019 = $('td:contains("Tuition and fees")').length
+       ? $('td:contains("Tuition and fees")').next().text().trim()
+       : $('td:contains("Tuition")').next().text().trim();
+
+     let tuitionAndFees2020 = $('td:contains("Tuition and fees")').length
+       ? $('td:contains("Tuition and fees")').next().next().text().trim()
+       : $('td:contains("Tuition")').next().next().text().trim();
+
+     let tuitionAndFees2021 = $('td:contains("Tuition and fees")').length
+       ? $('td:contains("Tuition and fees")').next().next().next().text().trim()
+       : $('td:contains("Tuition")').next().next().next().text().trim();
+
+     let tuitionAndFees2022 = $('td:contains("Tuition and fees")').length
+       ? $('td:contains("Tuition and fees")')
+           .next()
+           .next()
+           .next()
+           .next()
+           .text()
+           .trim()
+       : $('td:contains("Tuition")').next().next().next().next().text().trim();
+      
+       let tuitionAndFees = [tuitionAndFees2019,tuitionAndFees2020,tuitionAndFees2021,tuitionAndFees2022];
+
+
+
+        let inStatetuitionAndFees2019 = $('td:contains("In-state")').next().text().trim();
+        let inStatetuitionAndFees2020 = $('td:contains("In-state")').next().next().text().trim();
+        let inStatetuitionAndFees2021 = $('td:contains("In-state")').next().next().next().text().trim();
+        let inStatetuitionAndFees2022 = $('td:contains("In-state")').next().next().next().next().text().trim();
+        let inStateTuition = [inStatetuitionAndFees2019,inStatetuitionAndFees2020,inStatetuitionAndFees2021,inStatetuitionAndFees2022];  
+
+          let outStatetuitionAndFees2019 = $('td:contains("Out-of-state")').next().text().trim();
+          let outStatetuitionAndFees2020 = $('td:contains("Out-of-state")').next().next().text().trim();
+          let outStatetuitionAndFees2021 = $('td:contains("Out-of-state")').next().next().next().text().trim();
+          let outStatetuitionAndFees2022 = $('td:contains("Out-of-state")').next().next().next().next().text().trim();
+          let outOfStateTuition = [outStatetuitionAndFees2019,outStatetuitionAndFees2020,outStatetuitionAndFees2021,outStatetuitionAndFees2022];
 
       results.push({
-        id: index,
-        schoolName,
-        phoneNumber,
-        website,
+        tuitionAndFees,
+        inStateTuition,
+        outOfStateTuition
       });
 
       console.log("Index: ", index);
 
-      fs.writeFile("outputs/colleges.json", JSON.stringify(results), (err) => {
-        if (err) throw err;
-        // console.log(`${index} Results saved to file!`);
-      });
-    })
-    .catch((error) => {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    } catch (error) {
       console.log("Index: ", index);
-      // console.log("schoolName: ", schoolName);
       console.log(error);
-    });
-});
+    }
+  }
 
-////////////////////////
+  fs.writeFile("outputs/colleges5.json", JSON.stringify(results), (err) => {
+    if (err) throw err;
+  });
+}
+
+getData();
