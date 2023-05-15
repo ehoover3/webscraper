@@ -246,7 +246,6 @@
 
 ////////////////////////
 
-
 const fs = require("fs");
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -274,54 +273,113 @@ async function getData() {
         .eq(0)
         .text()
         .trim();
-      const studentToFacultyRatio = $('td:contains("Student-to-faculty ratio:")').next().text().trim();
+      const studentToFacultyRatio = $(
+        'td:contains("Student-to-faculty ratio:")'
+      )
+        .next()
+        .text()
+        .trim();
       let totalEnrollment = $('th:contains("Total enrollment")')
         .next()
         .text()
         .trim();
 
-     let tuitionAndFees2019 = $('td:contains("Tuition and fees")').length
-       ? $('td:contains("Tuition and fees")').next().text().trim()
-       : $('td:contains("Tuition")').next().text().trim();
+      let tuitionAndFees2019 = $('td:contains("Tuition and fees")').length
+        ? $('td:contains("Tuition and fees")').next().text().trim()
+        : $('td:contains("Tuition")').next().text().trim();
 
-     let tuitionAndFees2020 = $('td:contains("Tuition and fees")').length
-       ? $('td:contains("Tuition and fees")').next().next().text().trim()
-       : $('td:contains("Tuition")').next().next().text().trim();
+      let tuitionAndFees2020 = $('td:contains("Tuition and fees")').length
+        ? $('td:contains("Tuition and fees")').next().next().text().trim()
+        : $('td:contains("Tuition")').next().next().text().trim();
 
-     let tuitionAndFees2021 = $('td:contains("Tuition and fees")').length
-       ? $('td:contains("Tuition and fees")').next().next().next().text().trim()
-       : $('td:contains("Tuition")').next().next().next().text().trim();
+      let tuitionAndFees2021 = $('td:contains("Tuition and fees")').length
+        ? $('td:contains("Tuition and fees")')
+            .next()
+            .next()
+            .next()
+            .text()
+            .trim()
+        : $('td:contains("Tuition")').next().next().next().text().trim();
 
-     let tuitionAndFees2022 = $('td:contains("Tuition and fees")').length
-       ? $('td:contains("Tuition and fees")')
-           .next()
-           .next()
-           .next()
-           .next()
-           .text()
-           .trim()
-       : $('td:contains("Tuition")').next().next().next().next().text().trim();
-      
-       let tuitionAndFees = [tuitionAndFees2019,tuitionAndFees2020,tuitionAndFees2021,tuitionAndFees2022];
+      let tuitionAndFees2022 = $('td:contains("Tuition and fees")').length
+        ? $('td:contains("Tuition and fees")')
+            .next()
+            .next()
+            .next()
+            .next()
+            .text()
+            .trim()
+        : $('td:contains("Tuition")').next().next().next().next().text().trim();
 
+      let tuitionAndFees = [
+        tuitionAndFees2019,
+        tuitionAndFees2020,
+        tuitionAndFees2021,
+        tuitionAndFees2022,
+      ];
 
+      let inStatetuitionAndFees2019 = $('td:contains("In-state")')
+        .next()
+        .text()
+        .trim();
+      let inStatetuitionAndFees2020 = $('td:contains("In-state")')
+        .next()
+        .next()
+        .text()
+        .trim();
+      let inStatetuitionAndFees2021 = $('td:contains("In-state")')
+        .next()
+        .next()
+        .next()
+        .text()
+        .trim();
+      let inStatetuitionAndFees2022 = $('td:contains("In-state")')
+        .next()
+        .next()
+        .next()
+        .next()
+        .text()
+        .trim();
+      let inStateTuition = [
+        inStatetuitionAndFees2019,
+        inStatetuitionAndFees2020,
+        inStatetuitionAndFees2021,
+        inStatetuitionAndFees2022,
+      ];
 
-        let inStatetuitionAndFees2019 = $('td:contains("In-state")').next().text().trim();
-        let inStatetuitionAndFees2020 = $('td:contains("In-state")').next().next().text().trim();
-        let inStatetuitionAndFees2021 = $('td:contains("In-state")').next().next().next().text().trim();
-        let inStatetuitionAndFees2022 = $('td:contains("In-state")').next().next().next().next().text().trim();
-        let inStateTuition = [inStatetuitionAndFees2019,inStatetuitionAndFees2020,inStatetuitionAndFees2021,inStatetuitionAndFees2022];  
-
-          let outStatetuitionAndFees2019 = $('td:contains("Out-of-state")').next().text().trim();
-          let outStatetuitionAndFees2020 = $('td:contains("Out-of-state")').next().next().text().trim();
-          let outStatetuitionAndFees2021 = $('td:contains("Out-of-state")').next().next().next().text().trim();
-          let outStatetuitionAndFees2022 = $('td:contains("Out-of-state")').next().next().next().next().text().trim();
-          let outOfStateTuition = [outStatetuitionAndFees2019,outStatetuitionAndFees2020,outStatetuitionAndFees2021,outStatetuitionAndFees2022];
+      let outStatetuitionAndFees2019 = $('td:contains("Out-of-state")')
+        .next()
+        .text()
+        .trim();
+      let outStatetuitionAndFees2020 = $('td:contains("Out-of-state")')
+        .next()
+        .next()
+        .text()
+        .trim();
+      let outStatetuitionAndFees2021 = $('td:contains("Out-of-state")')
+        .next()
+        .next()
+        .next()
+        .text()
+        .trim();
+      let outStatetuitionAndFees2022 = $('td:contains("Out-of-state")')
+        .next()
+        .next()
+        .next()
+        .next()
+        .text()
+        .trim();
+      let outOfStateTuition = [
+        outStatetuitionAndFees2019,
+        outStatetuitionAndFees2020,
+        outStatetuitionAndFees2021,
+        outStatetuitionAndFees2022,
+      ];
 
       results.push({
         tuitionAndFees,
         inStateTuition,
-        outOfStateTuition
+        outOfStateTuition,
       });
 
       console.log("Index: ", index);
@@ -333,7 +391,7 @@ async function getData() {
     }
   }
 
-  fs.writeFile("outputs/colleges5.json", JSON.stringify(results), (err) => {
+  fs.writeFile("outputs/colleges1.json", JSON.stringify(results), (err) => {
     if (err) throw err;
   });
 }

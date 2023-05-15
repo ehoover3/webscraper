@@ -1,1 +1,36 @@
-[{"id":0,"schoolName":"Alabama A & M University","phoneNumber":"(256) 372-5000","website":"www.aamu.edu/","studentToFacultyRatio":"18 to 1","inStateTuition":"$10,024"},{"id":1,"schoolName":"Ringling College of Art and Design","phoneNumber":"(800) 255-7695","website":"www.ringling.edu/","studentToFacultyRatio":"12 to 1","inStateTuition":"$52,826"},{"id":2,"schoolName":"Robert Morgan Educational Center and Technical College","phoneNumber":"(305) 253-9920 x2427","website":"www.robertmorgantech.net/","studentToFacultyRatio":"10 to 1","inStateTuition":"$5,491"},{"id":3,"schoolName":"Rollins College","phoneNumber":"(407) 646-2000","website":"www.rollins.edu/","studentToFacultyRatio":"11 to 1","inStateTuition":"$56,110"}]
+[
+  {
+    "schoolName": "Alabama A & M University",
+    "tuitionData": {
+      "inStateTuitionAndFees": "10024",
+      "outStateTuitionAndFees": "18634"
+    }
+  },
+  {
+    "schoolName": "Ringling College of Art and Design",
+    "tuitionData": {
+      "tuitionAndFees": "52826"
+    }
+  },
+  {
+    "schoolName": "A T Still University of Health Sciences",
+    "tuitionData": {
+      "tuition": "37062",
+      "fees": "1150"
+    }
+  },
+  {
+    "schoolName": "Athens State University",
+    "tuitionData": {
+      "inStateTuitionAndFees": "-",
+      "outStateTuitionAndFees": "--"
+    }
+  },
+  {
+    "schoolName": "University of California-Hastings College of Law",
+    "tuitionData": {
+      "tuition": "..----",
+      "fees": "3320"
+    }
+  }
+]
