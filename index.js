@@ -1,399 +1,140 @@
-// const fs = require("fs");
-// const axios = require("axios");
-// const cheerio = require("cheerio");
-
-// const urls = require("./urlsTEST");
-
-// const testUrls = [
-//   // "https://nces.ed.gov/collegenavigator/?q=the+new+school&s=all&id=193654",
-//   // "https://nces.ed.gov/collegenavigator/?s=KS&id=154688",
-//   "https://nces.ed.gov/collegenavigator/?q=purdue&s=all&id=243780",
-// ];
-
-// const results = [];
-
-// urls.forEach((url) => {
-//   axios
-//     .get(url)
-//     .then((response) => {
-//       const html = response.data;
-//       const $ = cheerio.load(html);
-
-//       const schoolName = $(".headerlg").text().trim();
-//       const phoneNumber = $('td:contains("General information:")').next().text().trim();
-//       const website = $('td:contains("Website:")').next().text().trim();
-//       const type = $('td:contains("Type:")').next().text().trim();
-//       const awardsOffered = $('td:contains("Awards offered:")').next().text().trim();
-//       const campusSetting = $('td:contains("Campus setting:")').next().text().trim();
-//       const campusHousing = $('td:contains("Campus housing:")').next().text().trim();
-//       const studentPopulation = $('td:contains("Student population:")').next().text().trim();
-//       const studentToFacultyRatio = $('td:contains("Student-to-faculty ratio:")').next().text().trim();
-//       const tuitionAndFees = $('td:contains("Tuition and fees")').next().next().next().next().text();
-//       const inStateTuition = $('td:contains("In-state")').next().next().next().next().text();
-//       const outOfStateTuition = $('td:contains("Out-of-state")').next().next().next().next().text();
-//       const booksAndSupplies = $('td:contains("Books and supplies")').next().next().next().next().text();
-
-//       const onCampusRoomAndBoard = $('td:contains("Living arrangement")').parent().nextAll().eq(1).find("td:eq(4)").text();
-//       const onCampusOther = $('td:contains("Living arrangement")').parent().nextAll().eq(2).find("td:eq(4)").text();
-//       const offCampusRoomAndBoard = $('td:contains("Living arrangement")').parent().nextAll().eq(4).find("td:eq(4)").text();
-//       const offCampusOther = $('td:contains("Living arrangement")').parent().nextAll().eq(5).find("td:eq(4)").text();
-//       const offCampusWithFamilyOther = $('td:contains("Living arrangement")').parent().nextAll().eq(7).find("td:eq(4)").text();
-
-//       // TODO averageGraduateStudentInStateTuition
-//       // TODO averageGraduateStudentInStateFees
-//       // TODO averageGraduateStudentOutOfStateStateTuition
-//       // TODO averageGraduateStudentOutOfStateFees
-
-//       // TODO Undergraduate enrollment
-//       // TODO Graduate enrollment
-
-//       // TODO SAT Evidence-Based Reading and Writing
-//       // TODO SAT Math
-//       // TODO ACT Composite
-//       // TODO ACT English
-//       // TODO ACT Math
-
-//       // TODO Agricultural and Extension Education Services
-//       // TODO Agricultural Business and Management, General
-//       // TODO Agricultural Communication/Journalism
-//       // TODO Agricultural Economics
-//       // TODO Agricultural Mechanization, General
-//       // TODO Agriculture, General
-//       // TODO Agroecology and Sustainable Agriculture
-//       // TODO Agronomy and Crop Science
-//       // TODO Animal Sciences, General
-//       // TODO Farm/Farm and Ranch Management
-//       // TODO Food Science
-//       // TODO Horticultural Science
-//       // TODO Soil Science and Agronomy, General
-//       // TODO Turf and Turfgrass Management
-//       // TODO Veterinary Medicine
-//       // TODO Veterinary Sciences/Veterinary Clinical Sciences, General
-//       // TODO Veterinary/Animal Health Technology/Technician and Veterinary Assistant
-//       // TODO Landscape Architecture
-//       // TODO African-American/Black Studies
-//       // TODO American/United States Studies/Civilization
-//       // TODO Asian Studies/Civilization
-//       // TODO Italian Studies
-//       // TODO Women's Studies
-//       // TODO Biochemistry
-//       // TODO Biochemistry and Molecular Biology
-//       // TODO Biological and Biomedical Sciences, Other
-//       // TODO Biology/Biological Sciences, General
-//       // TODO Biomedical Sciences, General
-//       // TODO Biotechnology
-//       // TODO Botany/Plant Biology
-//       // TODO Cell/Cellular and Molecular Biology
-//       // TODO Ecology and Evolutionary Biology
-//       // TODO Entomology
-//       // TODO Exercise Physiology and Kinesiology
-//       // TODO Genetics, General
-//       // TODO Microbiology and Immunology
-//       // TODO Neurobiology and Anatomy
-//       // TODO Pharmacology
-//       // TODO Plant Genetics
-//       // TODO Toxicology
-//       // TODO Accounting
-//       // TODO Actuarial Science
-//       // TODO Business Administration and Management, General
-//       // TODO Business/Corporate Communications, General
-//       // TODO Business/Corporate Communications, Other
-//       // TODO Entrepreneurial and Small Business Operations, Other
-//       // TODO Finance, General
-//       // TODO Financial Planning and Services
-//       // TODO Hotel/Motel Administration/Management
-//       // TODO Human Resources Development
-//       // TODO Human Resources Management/Personnel Administration, General
-//       // TODO Logistics, Materials, and Supply Chain Management
-//       // TODO Management Science
-//       // TODO Management Sciences and Quantitative Methods, Other
-//       // TODO Marketing Research
-//       // TODO Marketing/Marketing Management, General
-//       // TODO Operations Management and Supervision
-//       // TODO Organizational Leadership
-//       // TODO Selling Skills and Sales Operations
-//       // TODO Communication, General
-//       // TODO Speech Communication and Rhetoric
-//       // TODO Artificial Intelligence
-//       // TODO Computer and Information Sciences, Other
-//       // TODO Computer and Information Sciences, General
-//       // TODO Computer and Information Systems Security/Auditing/Information Assurance
-//       // TODO Computer Graphics
-//       // TODO Computer Science
-//       // TODO Computer Systems Analysis/Analyst
-//       // TODO Information Science/Studies
-//       // TODO Information Technology
-//       // TODO Information Technology Project Management
-//       // TODO Adult and Continuing Education and Teaching
-//       // TODO Agricultural Teacher Education
-//       // TODO Art Teacher Education
-//       // TODO Bilingual and Multilingual Education
-//       // TODO Curriculum and Instruction
-//       // TODO Early Childhood Education and Teaching
-//       // TODO Education, General
-//       // TODO Education, Other
-//       // TODO Education/Teaching of the Gifted and Talented
-//       // TODO Educational Evaluation and Research
-//       // TODO Educational Leadership and Administration, General
-//       // TODO Educational Statistics and Research Methods
-//       // TODO Educational/Instructional Technology
-//       // TODO Elementary Education and Teaching
-//       // TODO English/Language Arts Teacher Education
-//       // TODO Physical Education Teaching and Coaching
-//       // TODO Science, Technology, Engineering, and Mathematics (STEM) Educational Methods
-//       // TODO Social Studies Teacher Education
-//       // TODO Special Education and Teaching, Other
-//       // TODO Technology Teacher Education/Industrial Arts Teacher Education
-//       // TODO Aerospace, Aeronautical, and Astronautical/Space Engineering, General
-//       // TODO Agricultural Engineering
-//       // TODO Bioengineering and Biomedical Engineering
-//       // TODO Chemical Engineering
-//       // TODO Civil Engineering, General
-//       // TODO Computer Engineering, General
-//       // TODO Construction Engineering
-//       // TODO Electrical and Electronics Engineering
-//       // TODO Engineering, General
-//       // TODO Engineering, Other
-//       // TODO Environmental/Environmental Health Engineering
-//       // TODO Industrial Engineering
-//       // TODO Materials Engineering
-//       // TODO Mechanical Engineering
-//       // TODO Nuclear Engineering
-//       // TODO Telecommunications Engineering
-//       // TODO
-//       // TODO (continue to add other programs)
-//       // TODO
-//       // TODO
-//       // TODO
-//       // TODO
-//       // TODO
-//       // TODO
-
-//       // TODO (Campus Security and Safety)
-
-//       // ODO Cohort Default Rates
-
-//       results.push({ schoolName, phoneNumber, website });
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// });
-
-// const outputFilename = "outputs/colleges.json";
-
-// fs.writeFile(outputFilename, JSON.stringify(results), (err) => {
-//   if (err) {
-//     console.error(err);
-//   } else {
-//     console.log(`File ${outputFilename} written successfully`);
-//   }
-// });
-
-////////////////////////////
-
-// 1. Each College has an IPEDS id
-// 2. Get all of the IPEDS id's from the nces.ed.gov/ipeds
-
-// End Goal is an array of objects with college data from nces.ed.gov/collegenavigator
-
-// Goal 1:  Id should be the ipeds id
-// Goal 2:  Can you create an async await, so that the fetch request go in order, & don't overwhelm the server
-// Goal 3:  Can you add one piece of data reliably?
-////// college tuition... can be private, in-state, out-of-state, in-district, other
-////// college data could 2022-2023 only vs the last 4 years
-//////
-////// recommend starting with "Undergraduate enrollment"
-
-// const fs = require("fs");
-// const axios = require("axios");
-// const cheerio = require("cheerio");
-// const urls = require("./inputs/urlsTEST.json");
-
-// const results = [];
-
-// urls.forEach((url, index) => {
-//   axios
-//     .get(url, { timeout: 30000 })
-//     .then((response) => {
-//       const html = response.data;
-//       const $ = cheerio.load(html);
-
-//       const schoolName = $(".headerlg").text().trim();
-//       const phoneNumber = $('td:contains("General information:")').next().text().trim();
-//       const website = $('td:contains("Website:")').next().text().trim();
-
-//       results.push({
-//         id: index,
-//         schoolName,
-//         phoneNumber,
-//         website,
-//       });
-
-//       console.log("Index: ", index);
-
-//       fs.writeFile("outputs/colleges.json", JSON.stringify(results), (err) => {
-//         if (err) throw err;
-//         // console.log(`${index} Results saved to file!`);
-//       });
-//     })
-//     .catch((error) => {
-//       console.log("Index: ", index);
-//       // console.log("schoolName: ", schoolName);
-//       console.log(error);
-//     });
-// });
-
-////////////////////////
-
+const puppeteer = require("puppeteer");
 const fs = require("fs");
-const axios = require("axios");
-const cheerio = require("cheerio");
-const urls = require("./inputs/urlsTEST.json");
 
-const results = [];
+const urls = [
+  "https://nces.ed.gov/collegenavigator/?id=100654",
+  "https://nces.ed.gov/collegenavigator/?id=136774",
+  "https://nces.ed.gov/collegenavigator/?id=177834",
+  "https://nces.ed.gov/collegenavigator/?id=100690",
+  "https://nces.ed.gov/collegenavigator/?id=100812",
+];
 
-async function getData() {
-  for (const [index, url] of urls.entries()) {
-    try {
-      const response = await axios.get(url, { timeout: 30000 });
-      const html = response.data;
-      const $ = cheerio.load(html);
-      const schoolName = $(".headerlg").text().trim();
-      const phoneNumber = $('td:contains("General information:")')
-        .next()
-        .text()
-        .trim();
-      const website = $('td:contains("Website:")').next().text().trim();
-      let someprogram = $(".pmtabular")
-        .find("tbody")
-        .find("tr")
-        .eq(1)
-        .find("td")
-        .eq(0)
-        .text()
-        .trim();
-      const studentToFacultyRatio = $(
-        'td:contains("Student-to-faculty ratio:")'
-      )
-        .next()
-        .text()
-        .trim();
-      let totalEnrollment = $('th:contains("Total enrollment")')
-        .next()
-        .text()
-        .trim();
+//   https://nces.ed.gov/collegenavigator/?id=100654",
+  //"https://nces.ed.gov/collegenavigator/?id=136774",
+ // "https://nces.ed.gov/collegenavigator/?id=177834",
+ // https://nces.ed.gov/collegenavigator/?id=100690,
+ // "https://nces.ed.gov/collegenavigator/?id=100812",
+ // "https://nces.ed.gov/collegenavigator/?id=110398
 
-      let tuitionAndFees2019 = $('td:contains("Tuition and fees")').length
-        ? $('td:contains("Tuition and fees")').next().text().trim()
-        : $('td:contains("Tuition")').next().text().trim();
+  
 
-      let tuitionAndFees2020 = $('td:contains("Tuition and fees")').length
-        ? $('td:contains("Tuition and fees")').next().next().text().trim()
-        : $('td:contains("Tuition")').next().next().text().trim();
+async function scrapeData() {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  const scrapedData = [];
 
-      let tuitionAndFees2021 = $('td:contains("Tuition and fees")').length
-        ? $('td:contains("Tuition and fees")')
-            .next()
-            .next()
-            .next()
-            .text()
-            .trim()
-        : $('td:contains("Tuition")').next().next().next().text().trim();
+  for (const url of urls) {
+    await page.goto(url);
 
-      let tuitionAndFees2022 = $('td:contains("Tuition and fees")').length
-        ? $('td:contains("Tuition and fees")')
-            .next()
-            .next()
-            .next()
-            .next()
-            .text()
-            .trim()
-        : $('td:contains("Tuition")').next().next().next().next().text().trim();
+    // makes sure the tuition div is loaded before executing the below. 
+    const tuitionDivHandle = await page.waitForSelector(
+      "div > #divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00"
+    );
 
-      let tuitionAndFees = [
-        tuitionAndFees2019,
-        tuitionAndFees2020,
-        tuitionAndFees2021,
-        tuitionAndFees2022,
-      ];
+    const tuitionDivContent = await page.evaluate((element) => {
+      // IN STATE TUITION - In-state
+      const xpathSelectorInStateTuition = './/td[contains(text(), "In-state")]';
+      const InStateTuitionElement = document.evaluate(
+        xpathSelectorInStateTuition,
+        element,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      ).singleNodeValue;
 
-      let inStatetuitionAndFees2019 = $('td:contains("In-state")')
-        .next()
-        .text()
-        .trim();
-      let inStatetuitionAndFees2020 = $('td:contains("In-state")')
-        .next()
-        .next()
-        .text()
-        .trim();
-      let inStatetuitionAndFees2021 = $('td:contains("In-state")')
-        .next()
-        .next()
-        .next()
-        .text()
-        .trim();
-      let inStatetuitionAndFees2022 = $('td:contains("In-state")')
-        .next()
-        .next()
-        .next()
-        .next()
-        .text()
-        .trim();
-      let inStateTuition = [
-        inStatetuitionAndFees2019,
-        inStatetuitionAndFees2020,
-        inStatetuitionAndFees2021,
-        inStatetuitionAndFees2022,
-      ];
+      // TUITION AND FEES - Tuition and fees
+      const xpathSelectorTuitionandFees =
+        './/td[contains(text(), "Tuition and fees")]';
+      const TuitionandFeesElement = document.evaluate(
+        xpathSelectorTuitionandFees,
+        element,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      ).singleNodeValue;
 
-      let outStatetuitionAndFees2019 = $('td:contains("Out-of-state")')
-        .next()
-        .text()
-        .trim();
-      let outStatetuitionAndFees2020 = $('td:contains("Out-of-state")')
-        .next()
-        .next()
-        .text()
-        .trim();
-      let outStatetuitionAndFees2021 = $('td:contains("Out-of-state")')
-        .next()
-        .next()
-        .next()
-        .text()
-        .trim();
-      let outStatetuitionAndFees2022 = $('td:contains("Out-of-state")')
-        .next()
-        .next()
-        .next()
-        .next()
-        .text()
-        .trim();
-      let outOfStateTuition = [
-        outStatetuitionAndFees2019,
-        outStatetuitionAndFees2020,
-        outStatetuitionAndFees2021,
-        outStatetuitionAndFees2022,
-      ];
+      // TUITION ALONE - Tuition
+      // FEES ALONE - Fees 
+      
+      const xpathSelectorTuitionAlone = './/td[contains(text(), "Tuition")]';
+      const TuitionAloneElement = document.evaluate(
+        xpathSelectorTuitionAlone,
+        element,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      ).singleNodeValue;
 
-      results.push({
-        tuitionAndFees,
-        inStateTuition,
-        outOfStateTuition,
-      });
 
-      console.log("Index: ", index);
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-    } catch (error) {
-      console.log("Index: ", index);
-      console.log(error);
-    }
+      // UnderGraduate Specific Tuition and Fees
+        const xpathSelectorUndergradTuitionAlone = './/td[contains(text(), "Undergraduate student tuition and fees")]';
+        const UndergradTuitionAloneElement = document.evaluate(
+          xpathSelectorUndergradTuitionAlone,
+          element,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null
+        ).singleNodeValue;
+
+
+      let inStateTuitionValue = "";
+      let tuitionAndFeesValue = "";
+      let tuitionAloneValue = "";
+      let undergradTuitionAloneValue = "";
+
+      if (UndergradTuitionAloneElement){
+        console.log(UndergradTuitionAloneElement)
+      }
+
+      // EX 1 specific
+        if (InStateTuitionElement && !UndergradTuitionAloneElement) {
+          let inStateTuitionValueElement =
+            InStateTuitionElement.nextElementSibling.nextElementSibling
+              .nextElementSibling;
+          inStateTuitionValue = inStateTuitionValueElement.textContent.trim();
+        }
+      // EX 2 specific 
+      if (TuitionandFeesElement && !UndergradTuitionAloneElement) {
+        let tuitionAndFeesValueElement =
+          TuitionandFeesElement.nextElementSibling.nextElementSibling
+            .nextElementSibling.nextElementSibling;
+        tuitionAndFeesValue = tuitionAndFeesValueElement.textContent.trim();
+      }
+       
+      // EX 3 specific 
+      if ( tuitionAndFeesValue.length <= 0 && TuitionAloneElement){
+        let tuitionAloneValueElement = TuitionAloneElement.nextElementSibling;
+        tuitionAloneValue = tuitionAloneValueElement.textContent.trim();
+      }
+
+        return {
+          InStateTuition: inStateTuitionValue ? inStateTuitionValue : "",
+          TuitionAndFees: tuitionAndFeesValue ? tuitionAndFeesValue : "",
+          TuitionAlone: tuitionAloneValue ? tuitionAloneValue : "",
+          UnderGradTuitionAlone: undergradTuitionAloneValue ? undergradTuitionAloneValue : ""
+        };
+    }, tuitionDivHandle);
+
+
+
+    scrapedData.push(tuitionDivContent);
   }
 
-  fs.writeFile("outputs/colleges1.json", JSON.stringify(results), (err) => {
+  await browser.close();
+
+  fs.writeFile("outputs/colleges.json", JSON.stringify(scrapedData), (err) => {
     if (err) throw err;
   });
+
+  return scrapedData;
 }
 
-getData();
+
+
+
+
+
+scrapeData().then((value) => {
+  console.log(value); // print the scraped data
+});
