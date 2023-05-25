@@ -1,7 +1,12 @@
-
 import fs from "fs";
 import puppeteer from "puppeteer";
-import urls from "./inputs/set1urls.json" assert { type: "json" };
+
+
+
+import urls from "./inputs/CaseStudyURLS.json" assert { type: "json" };
+const outputPath = "outputs/test1.json";
+
+
 import checkSelectors from "./checkSelectors.json" assert { type: "json" };
 import dataSelectors from "./dataSelectors.json" assert { type: "json" };
 
@@ -9,7 +14,6 @@ async function scrapeData() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const scrapedData = [];
-
 
   // helper functions for timing of the scraper
   const getRandomDelay = (min, max) =>
@@ -25,19 +29,25 @@ async function scrapeData() {
 
     // INITIALIZE VARIABLES
 
-    let inStateTuitionAndFeesValue = "";
-    let inDistrictTuitionAndFeesValue = "";
-    let outStateTuitionAndFeesValue = "";
+    let inStateTuitionAndFees = "";
+    let inDistrictTuitionAndFees = "";
+    let outStateTuitionAndFees = "";
     let inStateTuitionValue = "";
     let inStateFeesValue = "";
-    let tuitionAndFeesValue = "";
-    let tuitionAloneValue = "";
+    let tuitionAndFees = "";
+    let tuitionAlone = "";
     let gradTuitionAlone = "";
     let gradFeesAlone = "";
     let feesAloneValue = "";
-    let onCampusRoomAndBoardValue = "";
+    let onCampusRoomAndBoard = "";
+    let offCampusRoomAndBoard = "";
+    let offCampusWithFamily = "";
     let programFocused = false;
     let booksAndSuppliesValue = "";
+    let totalExpenseInStateOnCampus = "";
+    let totalExpenseInStateOffCampus = "";
+    let totalExpenseOutStateOnCampus = "";
+    let totalExpenseOutStateOffCampus = "";
 
     async function fetchPageData(selector, type = "css") {
       try {
@@ -81,33 +91,37 @@ async function scrapeData() {
       dataSelectors.programLengthSelector,
       "css"
     );
-  
-   let IpedsString = await fetchPageData(dataSelectors.ipedsIDXPath,"xpath")
 
-   let IpedsID;
-   try {
-    let match = IpedsString.match(/\d+/);
-    if (match !== null) {
-      IpedsID = match[0];
-    } else {
-      console.error("No match found");
+    let IpedsString = await fetchPageData(dataSelectors.ipedsIDXPath, "xpath");
+
+    let IpedsID;
+    try {
+      let match = IpedsString.match(/\d+/);
+      if (match !== null) {
+        IpedsID = match[0];
+      } else {
+        console.error("No match found");
+      }
+    } catch (error) {
+      console.error("An error occurred: ", error);
     }
-   } catch (error) {
-    console.error("An error occurred: ", error);
-   }
-
 
     // TUITION AND FEES SECTION
     // CHECK 1
     // IN-STATE and OUT-OF-STATE SEPERATE
     // 4 YEARS OF DATA
+    // TUITION AND FEES TOGETHER
     let TuitionFeesCheck1Identifier = await fetchPageData(
       checkSelectors.TuitionFeesCheck1IdentifierSelector,
       "css"
     );
     if (TuitionFeesCheck1Identifier === "In-state") {
-      inStateTuitionAndFeesValue = await fetchPageData(
+      inStateTuitionAndFees = await fetchPageData(
         dataSelectors.TuitionCheck1Selector,
+        "css"
+      );
+      outStateTuitionAndFees = await fetchPageData(
+        dataSelectors.TuitionCheck1Selector2,
         "css"
       );
     }
@@ -120,7 +134,7 @@ async function scrapeData() {
       "css"
     );
     if (TuitionFeesCheck2Identifier === "Tuition and fees") {
-      tuitionAndFeesValue = await fetchPageData(
+      tuitionAndFees = await fetchPageData(
         dataSelectors.TuitionCheck2Selector,
         "css"
       );
@@ -157,7 +171,7 @@ async function scrapeData() {
       "css"
     );
     if (TuitionFeesCheck4Identifier === "Tuition") {
-      tuitionAloneValue = await fetchPageData(
+      tuitionAlone = await fetchPageData(
         dataSelectors.TuitionCheck4Selector,
         "css"
       );
@@ -190,9 +204,9 @@ async function scrapeData() {
     // TUITION AND FEES SEPERATE ONLY GRAD STUDENT DATA AVAILABLE
     //!! This may need to be modified with an identifier !!
     if (
-      !tuitionAndFeesValue &&
-      !inStateTuitionAndFeesValue &&
-      !tuitionAloneValue &&
+      !tuitionAndFees &&
+      !inStateTuitionAndFees &&
+      !tuitionAlone &&
       programLength != "Program Length"
     ) {
       gradTuitionAlone = await fetchPageData(
@@ -206,7 +220,7 @@ async function scrapeData() {
     // GETS TUITION AND FEES FOR MOST POPULAR PROGRAM
     if (programLength === "Program Length") {
       programFocused = true;
-      tuitionAndFeesValue = await fetchPageData(
+      tuitionAndFees = await fetchPageData(
         dataSelectors.TuitionFeesCheck7Selector,
         "css"
       );
@@ -224,15 +238,15 @@ async function scrapeData() {
       "css"
     );
     if (TuitionFeesCheck8Identifier === "In-district") {
-      inStateTuitionAndFeesValue = await fetchPageData(
+      inStateTuitionAndFees = await fetchPageData(
         dataSelectors.TuitonFeesCheck8SelectorInState,
         "css"
       );
-      inDistrictTuitionAndFeesValue = await fetchPageData(
+      inDistrictTuitionAndFees = await fetchPageData(
         dataSelectors.TuitonFeesCheck8SelectorInDistrict,
         "css"
       );
-      outStateTuitionAndFeesValue = await fetchPageData(
+      outStateTuitionAndFees = await fetchPageData(
         dataSelectors.TuitonFeesCheck8SelectorOutState,
         "css"
       );
@@ -279,9 +293,12 @@ async function scrapeData() {
       "css"
     );
     if (onCampusRowHeaderCase1 === "On Campus") {
-      onCampusRoomAndBoardValue = await fetchPageData(
+      onCampusRoomAndBoard = await fetchPageData(
         dataSelectors.OnCampusRoomAndBoardCheck1Selector,
         "css"
+      );
+      offCampusRoomAndBoard = await fetchPageData(
+        dataSelectors.OffCampusRoomAndBoardCheck1Selector,"css"
       );
     }
 
@@ -291,7 +308,7 @@ async function scrapeData() {
       "css"
     );
     if (onCampusRowHeaderCase2 === "On Campus") {
-      onCampusRoomAndBoardValue = await fetchPageData(
+      onCampusRoomAndBoard = await fetchPageData(
         dataSelectors.OnCampusRoomAndBoardCheck2Selector,
         "css"
       );
@@ -303,16 +320,25 @@ async function scrapeData() {
       "css"
     );
     if (onCampusRowHeaderCase3 === "On Campus") {
-      onCampusRoomAndBoardValue = await fetchPageData(
+      onCampusRoomAndBoard = await fetchPageData(
         dataSelectors.OnCampusRoomAndBoardCheck3Selector,
         "css"
       );
     }
 
-    // END SCRAPING LOGIC
+    // TOTAL EXPENSES SECTION 
 
-    // Space in console.log and random delay
-    console.log("\n");
+    let totalExpensesCheck1Identifier  = await fetchPageData(checkSelectors.TotalExpensesCheck1IdentifierSelector,"css")
+    if (totalExpensesCheck1Identifier === "In-state"){
+      totalExpenseInStateOnCampus = await fetchPageData(dataSelectors.TotalExpensesInStateOnCampusCheck1Selector,"css")
+      totalExpenseInStateOffCampus = await fetchPageData(dataSelectors.TotalExpensesInStateOffCampusCheck1Selector,"css")
+      totalExpenseOutStateOnCampus = await fetchPageData(dataSelectors.TotalExpensesOutStateOnCampusCheck1Selector,"css")
+      totalExpenseOutStateOffCampus = await fetchPageData(dataSelectors.TotalExpensesOutStateOffCampusCheck1Selector,"css")
+    }
+      // END SCRAPING LOGIC
+
+      // Space in console.log and random delay
+      console.log("\n");
     const delayTime = getRandomDelay(2000, 4000); // Random delay between 2 to 4 seconds
     await delay(delayTime);
 
@@ -321,27 +347,36 @@ async function scrapeData() {
       ID: IpedsID,
       SchoolName: schoolName,
       SchoolAddress: schoolAddress,
-      InStateTuitionAndFees: inStateTuitionAndFeesValue,
-      InDistrictTuitionAndFees: inDistrictTuitionAndFeesValue,
-      OutStateTuitionAndFees: outStateTuitionAndFeesValue,
-      TuitionAndFees: tuitionAndFeesValue,
-      TuitionAlone: tuitionAloneValue,
+      InStateTuitionAndFees: inStateTuitionAndFees,
+      InDistrictTuitionAndFees: inDistrictTuitionAndFees,
+      OutStateTuitionAndFees: outStateTuitionAndFees,
+      TuitionAndFees: tuitionAndFees,
+      TuitionAlone: tuitionAlone,
       FeesAlone: feesAloneValue,
       GradTuition: gradTuitionAlone,
       GradFees: gradFeesAlone,
       BooksandSupplies: booksAndSuppliesValue,
-      OnCampusRoomAndBoard: onCampusRoomAndBoardValue,
+      OnCampusRoomAndBoard: onCampusRoomAndBoard,
+      OffCampusRoomAndBoard: offCampusRoomAndBoard,
       ProgramFocused: programFocused,
       InStateTuition: inStateTuitionValue,
       InStateFees: inStateFeesValue,
+      TotalExpensesInStateOnCampus : totalExpenseInStateOnCampus,
+      TotalExpensesInStateOffCampus : totalExpenseInStateOffCampus,
+      TotalExpensesOutStateOnCampus : totalExpenseOutStateOnCampus,
+      TotalExpensesOutStateOffCampus: totalExpenseOutStateOffCampus
     });
   }
 
   await browser.close();
 
-  fs.writeFile("outputs/set1results.json", JSON.stringify(scrapedData,null,4), (err) => {
-    if (err) throw err;
-  });
+  fs.writeFile(
+    outputPath,
+    JSON.stringify(scrapedData, null, 4),
+    (err) => {
+      if (err) throw err;
+    }
+  );
 
   return scrapedData;
 }

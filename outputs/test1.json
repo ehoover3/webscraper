@@ -6,7 +6,7 @@
         "SchoolAddress": "4900 Meridian Street, Normal, Alabama 35762",
         "InStateTuitionAndFees": "$10,024",
         "InDistrictTuitionAndFees": "",
-        "OutStateTuitionAndFees": "",
+        "OutStateTuitionAndFees": "$18,634",
         "TuitionAndFees": "",
         "TuitionAlone": "",
         "FeesAlone": "",
@@ -14,9 +14,14 @@
         "GradFees": "",
         "BooksandSupplies": "$1,600",
         "OnCampusRoomAndBoard": "$9,520",
+        "OffCampusRoomAndBoard": "$9,520",
         "ProgramFocused": false,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "$24,234",
+        "TotalExpensesInStateOffCampus": "$24,234",
+        "TotalExpensesOutStateOnCampus": "$32,844",
+        "TotalExpensesOutStateOffCampus": "$32,844"
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=136774",
@@ -33,9 +38,14 @@
         "GradFees": "",
         "BooksandSupplies": "$2,700",
         "OnCampusRoomAndBoard": "$16,300",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=177834",
@@ -52,9 +62,14 @@
         "GradFees": "$1,150",
         "BooksandSupplies": "",
         "OnCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=100690",
@@ -71,9 +86,14 @@
         "GradFees": "",
         "BooksandSupplies": "",
         "OnCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=100812",
@@ -90,9 +110,14 @@
         "GradFees": "",
         "BooksandSupplies": "",
         "OnCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "$7,230",
-        "InStateFees": "$2,310"
+        "InStateFees": "$2,310",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=110398",
@@ -109,9 +134,14 @@
         "GradFees": "$3,320",
         "BooksandSupplies": "",
         "OnCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=104568",
@@ -128,9 +158,14 @@
         "GradFees": "",
         "BooksandSupplies": "$2,002",
         "OnCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": true,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=148131",
@@ -147,9 +182,14 @@
         "GradFees": "",
         "BooksandSupplies": "",
         "OnCampusRoomAndBoard": "$11,440",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=148292",
@@ -166,8 +206,13 @@
         "GradFees": "",
         "BooksandSupplies": "$1,400",
         "OnCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "",
-        "InStateFees": ""
+        "InStateFees": "",
+        "TotalExpensesInStateOnCampus": "",
+        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesOutStateOnCampus": "",
+        "TotalExpensesOutStateOffCampus": ""
     }
 ]
