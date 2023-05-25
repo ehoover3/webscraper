@@ -10,8 +10,12 @@
   "FeesCheck3Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(2)",
   "TuitionCheck4Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(2)",
   "FeesCheck4Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(3) > td:nth-child(2)",
+  "GradTuitionCheck4Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(5) > td:nth-child(2)",
+  "GradFeesCheck4Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(6) > td:nth-child(2)",
   "TuitionCheck5Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(2)",
   "FeesCheck5Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(3) > td:nth-child(2)",
+  "OutStateTuitionCheck5Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(4) > td:nth-child(2)",
+  "OutStateFeesCheck5Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(5) > td:nth-child(2)",
   "TuitionCheck6Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table > tbody > tr:nth-child(1) > td:nth-child(2)",
   "TuitionFeesCheck7Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(4) > tbody > tr:nth-child(1) > td:nth-child(5)",
   "TuitonFeesCheck8SelectorInState": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(3) > td:nth-child(5)",
@@ -23,10 +27,20 @@
   "BooksSuppliesCheck3Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(5) > td:nth-child(5)",
   "OnCampusRoomAndBoardCheck1Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(7) > td:nth-child(5)",
   "OffCampusRoomAndBoardCheck1Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(10) > td:nth-child(5)",
+  "OffCampusRoomAndBoardCheck2Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(8) > td:nth-child(5)",
   "OnCampusRoomAndBoardCheck2Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(5) > td:nth-child(5)",
   "OnCampusRoomAndBoardCheck3Selector": "#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(4) > td:nth-child(5)",
+  "OffCampusRoomAndBoardCheck3Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(7) > td:nth-child(5)",
+  "OffCampusRoomAndBoardCheck4Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(8) > td:nth-child(5)",
   "TotalExpensesInStateOnCampusCheck1Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(16) > td:nth-child(5)",
   "TotalExpensesInStateOffCampusCheck1Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(17) > td:nth-child(5)",
   "TotalExpensesOutStateOnCampusCheck1Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(20) > td:nth-child(5)",
-  "TotalExpensesOutStateOffCampusCheck1Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(21) > td:nth-child(5)"
+  "TotalExpensesOutStateOffCampusCheck1Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(21) > td:nth-child(5)",
+  "TotalExpenseOnCampusCheck2Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(13) > td:nth-child(5)",
+  "TotalExpenseOffCampusCheck2Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(14) > td:nth-child(5)"
+  ,"TotalExpenseOnCampusCheck3Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(12) > td:nth-child(5)"
+  ,"TotalExpenseOffCampusCheck3Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(13) > td:nth-child(5)"
+  ,"TotalExpenseInStateOffCampusCheck4Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(17) > td:nth-child(5)"
+  ,"TotalExpenseOutStateOffCampusCheck4Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(20) > td:nth-child(5)"
+  ,"TotalExpenseInDistrictStateOffCampusCheck4Selector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(14) > td:nth-child(5)"
 }

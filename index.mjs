@@ -34,6 +34,8 @@ async function scrapeData() {
     let outStateTuitionAndFees = "";
     let inStateTuitionValue = "";
     let inStateFeesValue = "";
+    let outStateTuition = "";
+    let outStateFees = "";
     let tuitionAndFees = "";
     let tuitionAlone = "";
     let gradTuitionAlone = "";
@@ -48,6 +50,9 @@ async function scrapeData() {
     let totalExpenseInStateOffCampus = "";
     let totalExpenseOutStateOnCampus = "";
     let totalExpenseOutStateOffCampus = "";
+    let totalExpenseInDistrictOffCampus = "";
+    let totalExpenseOnCampus = "";
+    let totalExpenseOffCampus = "";
 
     async function fetchPageData(selector, type = "css") {
       try {
@@ -179,6 +184,8 @@ async function scrapeData() {
         dataSelectors.FeesCheck4Selector,
         "css"
       );
+      gradTuitionAlone = await fetchPageData(dataSelectors.GradTuitionCheck4Selector,"css")
+      gradFeesAlone = await fetchPageData(dataSelectors.GradFeesCheck4Selector,"css")
     }
 
     // CHECK 5
@@ -198,6 +205,8 @@ async function scrapeData() {
         dataSelectors.FeesCheck5Selector,
         "css"
       );
+      outStateTuition = await fetchPageData(dataSelectors.OutStateTuitionCheck5Selector,"css")
+      outStateFees = await fetchPageData(dataSelectors.OutStateFeesCheck5Selector,"css")
     }
 
     // CHECK 6
@@ -252,7 +261,7 @@ async function scrapeData() {
       );
     }
 
-    // CHECK FOR BOOKS AND SUPPLIES HEADER 1
+    // CHECK FOR BOOKS AND SUPPLIES 1
     let booksAndSuppliesCheck1Identifier = await fetchPageData(
       checkSelectors.BooksSuppliesCheck1IdentifierSelector,
       "css"
@@ -264,7 +273,7 @@ async function scrapeData() {
       );
     }
 
-    // CHECK FOR BOOKS AND SUPPLIES HEADER 2
+    // CHECK FOR BOOKS AND SUPPLIES 2
     let booksAndSuppliesCheck2Identifier = await fetchPageData(
       checkSelectors.BooksSuppliesCheck2IdentifierSelector,
       "css"
@@ -275,7 +284,7 @@ async function scrapeData() {
         "css"
       );
 
-    // // CHECK FOR BOOKS AND SUPPLIES HEADER 3
+    // // CHECK FOR BOOKS AND SUPPLIES 3
     let booksAndSuppliesCheck3Identifier = await fetchPageData(
       checkSelectors.BooksSuppliesCheck3IdentifierSelector,
       "css"
@@ -287,7 +296,7 @@ async function scrapeData() {
       );
     }
 
-    // ON CAMPUS ROOM AND BOARD CHECK CASE 1
+    // ROOM AND BOARD CHECK CASE 1
     let onCampusRowHeaderCase1 = await fetchPageData(
       checkSelectors.OnCampusRoomAndBoardCheck1IdentifierSelector,
       "css"
@@ -302,7 +311,7 @@ async function scrapeData() {
       );
     }
 
-    // ON CAMPUS ROOM AND BOARD CHECK CASE 2
+    // ROOM AND BOARD CHECK CASE 2
     let onCampusRowHeaderCase2 = await fetchPageData(
       checkSelectors.OnCampusRoomAndBoardCheck2IdentifierSelector,
       "css"
@@ -312,9 +321,10 @@ async function scrapeData() {
         dataSelectors.OnCampusRoomAndBoardCheck2Selector,
         "css"
       );
+      offCampusRoomAndBoard = await fetchPageData(dataSelectors.OffCampusRoomAndBoardCheck2Selector,"css")
     }
 
-    // ON CAMPUS ROOM AND BOARD CHECK CASE 3
+    // ROOM AND BOARD CHECK CASE 3
     let onCampusRowHeaderCase3 = await fetchPageData(
       checkSelectors.OnCampusRoomAndBoardCheck3IdentifierSelector,
       "css"
@@ -324,10 +334,18 @@ async function scrapeData() {
         dataSelectors.OnCampusRoomAndBoardCheck3Selector,
         "css"
       );
+      offCampusRoomAndBoard = await fetchPageData(dataSelectors.OffCampusRoomAndBoardCheck3Selector,"css")
+    }
+
+    // ROOM AND BOARD CHECK 4 
+    let offCampusRowHeaderCase4 = await fetchPageData(checkSelectors.OffCampusRoomAndBoardCheck4IdentifierSelector,"css")
+    if(offCampusRowHeaderCase4==="Off Campus"){
+      offCampusRoomAndBoard = await fetchPageData(dataSelectors.OffCampusRoomAndBoardCheck4Selector,"css")
     }
 
     // TOTAL EXPENSES SECTION 
-
+    // CHECK 1
+    // IN-STATE OUT-STATE SEPERATE
     let totalExpensesCheck1Identifier  = await fetchPageData(checkSelectors.TotalExpensesCheck1IdentifierSelector,"css")
     if (totalExpensesCheck1Identifier === "In-state"){
       totalExpenseInStateOnCampus = await fetchPageData(dataSelectors.TotalExpensesInStateOnCampusCheck1Selector,"css")
@@ -335,6 +353,38 @@ async function scrapeData() {
       totalExpenseOutStateOnCampus = await fetchPageData(dataSelectors.TotalExpensesOutStateOnCampusCheck1Selector,"css")
       totalExpenseOutStateOffCampus = await fetchPageData(dataSelectors.TotalExpensesOutStateOffCampusCheck1Selector,"css")
     }
+
+    // CHECK 2
+    // IN STATE OUT-STATE TOGETHER 
+    let totalExpensesCheck2Identifier = await fetchPageData(checkSelectors.TotalExpensesCheck2IdentifierSelector,"css")
+    if (totalExpensesCheck2Identifier === "On Campus"){
+      totalExpenseOnCampus = await fetchPageData(dataSelectors.TotalExpenseOnCampusCheck2Selector,"css")
+      totalExpenseOffCampus = await fetchPageData(dataSelectors.TotalExpenseOffCampusCheck2Selector,"css")
+    }
+
+
+    // CHECK 3 
+    // IN STATE OUT STATE TOGETHER
+    // ONE LINE UP FROM CASE 2
+
+    let totalExpensesCheck3Identifier = await fetchPageData(checkSelectors.TotalExpensesCheck3IdentifierSelector,"css")
+    if (totalExpensesCheck3Identifier === "On Campus"){
+      totalExpenseOnCampus = await fetchPageData(dataSelectors.TotalExpenseOnCampusCheck3Selector,"css")
+      totalExpenseOffCampus = await fetchPageData(dataSelectors.TotalExpenseOffCampusCheck3Selector,"css")
+    }
+
+    // CHECK 4 
+    // IN DISTRICT
+    // OFF CAMPUS ONLY 
+
+    let totalExpensesCheck4Identifier = await fetchPageData(checkSelectors.TotalExpensesCheck4IdentifierSelector,"css")
+    if (totalExpensesCheck4Identifier === "In-district") {
+      totalExpenseInStateOffCampus = await fetchPageData(dataSelectors.TotalExpenseInStateOffCampusCheck4Selector,"css")
+      totalExpenseOutStateOffCampus = await fetchPageData(dataSelectors.TotalExpenseOutStateOffCampusCheck4Selector,"css")
+      totalExpenseInDistrictOffCampus = await fetchPageData(dataSelectors.TotalExpenseInDistrictStateOffCampusCheck4Selector,"css")
+    }
+
+
       // END SCRAPING LOGIC
 
       // Space in console.log and random delay
@@ -361,10 +411,15 @@ async function scrapeData() {
       ProgramFocused: programFocused,
       InStateTuition: inStateTuitionValue,
       InStateFees: inStateFeesValue,
+      OutStateTuition: outStateTuition,
+      OutStateFees: outStateFees,
       TotalExpensesInStateOnCampus : totalExpenseInStateOnCampus,
       TotalExpensesInStateOffCampus : totalExpenseInStateOffCampus,
       TotalExpensesOutStateOnCampus : totalExpenseOutStateOnCampus,
-      TotalExpensesOutStateOffCampus: totalExpenseOutStateOffCampus
+      TotalExpensesOutStateOffCampus: totalExpenseOutStateOffCampus,
+      TotalExpenseInDistrictOffCampus: totalExpenseInDistrictOffCampus,
+      TotalExpensesOnCampus:totalExpenseOnCampus,
+      TotalExpenseOffCampus:totalExpenseOffCampus
     });
   }
 

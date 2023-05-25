@@ -18,10 +18,15 @@
         "ProgramFocused": false,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "$24,234",
         "TotalExpensesInStateOffCampus": "$24,234",
         "TotalExpensesOutStateOnCampus": "$32,844",
-        "TotalExpensesOutStateOffCampus": "$32,844"
+        "TotalExpensesOutStateOffCampus": "$32,844",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "",
+        "TotalExpenseOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=136774",
@@ -38,14 +43,19 @@
         "GradFees": "",
         "BooksandSupplies": "$2,700",
         "OnCampusRoomAndBoard": "$16,300",
-        "OffCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "$15,468",
         "ProgramFocused": false,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "",
         "TotalExpensesInStateOffCampus": "",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "$76,975",
+        "TotalExpenseOffCampus": "$76,509"
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=177834",
@@ -66,10 +76,15 @@
         "ProgramFocused": false,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "",
         "TotalExpensesInStateOffCampus": "",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "",
+        "TotalExpenseOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=100690",
@@ -82,18 +97,23 @@
         "TuitionAndFees": "",
         "TuitionAlone": "$9,000",
         "FeesAlone": "$950",
-        "GradTuition": "",
-        "GradFees": "",
+        "GradTuition": "$10,800",
+        "GradFees": "$1,350",
         "BooksandSupplies": "",
         "OnCampusRoomAndBoard": "",
         "OffCampusRoomAndBoard": "",
         "ProgramFocused": false,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "",
         "TotalExpensesInStateOffCampus": "",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "",
+        "TotalExpenseOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=100812",
@@ -114,10 +134,15 @@
         "ProgramFocused": false,
         "InStateTuition": "$7,230",
         "InStateFees": "$2,310",
+        "OutStateTuition": "$14,460",
+        "OutStateFees": "$2,310",
         "TotalExpensesInStateOnCampus": "",
         "TotalExpensesInStateOffCampus": "",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "",
+        "TotalExpenseOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=110398",
@@ -138,10 +163,15 @@
         "ProgramFocused": false,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "",
         "TotalExpensesInStateOffCampus": "",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "",
+        "TotalExpenseOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=104568",
@@ -162,10 +192,15 @@
         "ProgramFocused": true,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "",
         "TotalExpensesInStateOffCampus": "",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "",
+        "TotalExpenseOffCampus": ""
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=148131",
@@ -182,14 +217,19 @@
         "GradFees": "",
         "BooksandSupplies": "",
         "OnCampusRoomAndBoard": "$11,440",
-        "OffCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "$16,000",
         "ProgramFocused": false,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "",
         "TotalExpensesInStateOffCampus": "",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "",
+        "TotalExpenseInDistrictOffCampus": "",
+        "TotalExpensesOnCampus": "$45,670",
+        "TotalExpenseOffCampus": "$51,430"
     },
     {
         "Url": "https://nces.ed.gov/collegenavigator/?id=148292",
@@ -206,13 +246,18 @@
         "GradFees": "",
         "BooksandSupplies": "$1,400",
         "OnCampusRoomAndBoard": "",
-        "OffCampusRoomAndBoard": "",
+        "OffCampusRoomAndBoard": "$10,070",
         "ProgramFocused": false,
         "InStateTuition": "",
         "InStateFees": "",
+        "OutStateTuition": "",
+        "OutStateFees": "",
         "TotalExpensesInStateOnCampus": "",
-        "TotalExpensesInStateOffCampus": "",
+        "TotalExpensesInStateOffCampus": "$25,220",
         "TotalExpensesOutStateOnCampus": "",
-        "TotalExpensesOutStateOffCampus": ""
+        "TotalExpensesOutStateOffCampus": "$31,490",
+        "TotalExpenseInDistrictOffCampus": "$19,010",
+        "TotalExpensesOnCampus": "",
+        "TotalExpenseOffCampus": ""
     }
 ]
