@@ -2,9 +2,9 @@ import fs from "fs";
 import puppeteer from "puppeteer";
 
 
-
-import urls from "./inputs/CaseStudyURLS.json" assert { type: "json" };
-const outputPath = "outputs/test1.json";
+// Set input and output here 
+import urls from "./inputs/set1urls.json" assert { type: "json" };
+const outputPath = "outputs/set1output.json";
 
 
 import checkSelectors from "./checkSelectors.json" assert { type: "json" };
