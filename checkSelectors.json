@@ -1,0 +1,21 @@
+{
+
+
+"TuitionFeesCheck1IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(2) > td:nth-child(1)",
+"TuitionFeesCheck2IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(1) > td:nth-child(1)",
+"TuitionFeesCheck3IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > thead > tr > th:nth-child(1)",
+"TuitionFeesCheck4IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(1)",
+"TuitionFeesCheck5IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(1)",
+"TuitionFeesCheck8IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(2) > td:nth-child(1)",
+"BooksSuppliesCheck1IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(4) > td:nth-child(1)",
+"BooksSuppliesCheck2IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(2) > td:nth-child(1)",
+"BooksSuppliesCheck3IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(5) > td:nth-child(1)",
+"OnCampusRoomAndBoardCheck1IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(6) > td:nth-child(1)",
+"OnCampusRoomAndBoardCheck2IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(4) > td:nth-child(1)",
+"OnCampusRoomAndBoardCheck3IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(3) > td:nth-child(1)"
+,"OffCampusRoomAndBoardCheck4IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(7) > td:nth-child(1)"
+,"TotalExpensesCheck1IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(15) > td:nth-child(1)"
+,"TotalExpensesCheck2IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(13) > td:nth-child(1)"
+,"TotalExpensesCheck3IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(12) > td:nth-child(1)"
+,"TotalExpensesCheck4IdentifierSelector":"#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > div > table:nth-child(3) > tbody > tr:nth-child(13) > td:nth-child(1)"
+}
